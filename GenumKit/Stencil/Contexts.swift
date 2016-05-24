@@ -47,6 +47,18 @@ extension ColorsFileParser {
   }
 }
 
+extension IconsFileParser {
+    public func stencilContext(enumName enumName: String = "Icon") -> Context {
+//        let iconMap = icons.map({ (icon: (name: String, value: String)) -> [String:String] in
+//            return [
+//                "name": icon.name,
+//                "unicode": icon.value,
+//            ]
+//        }).sort { $0["name"] < $1["name"] }
+        return Context(dictionary: ["enumName": enumName, "icons" : icons])
+    }
+ }
+
 /* MARK: - Stencil Context for Images
 
  - `enumName`: `String` — name of the enum to generate

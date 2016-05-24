@@ -8,7 +8,7 @@ import Commander
 import PathKit
 import GenumKit
 
-let allSubcommands = ["colors", "images", "storyboards", "strings"]
+let allSubcommands = ["colors", "images", "storyboards", "strings", "icons"]
 
 let templatesCommand = command(
   Option<String>("only", "", flag: "l", description: "If specified, only list templates valid for that specific subcommand") {

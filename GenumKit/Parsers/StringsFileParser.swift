@@ -146,10 +146,10 @@ public final class StringsFileParser {
 
     // enumerate the conversion specifiers and their optionally forced position and build the array of PlaceholderTypes accordingly
     var list = [PlaceholderType]()
-    var nextNonPositional = 1
+    let nextNonPositional = 1
     for (str, pos) in chars {
       if let char = str.characters.first, let p = PlaceholderType(formatChar: char) {
-        let insertionPos = pos ?? nextNonPositional++
+        let insertionPos = pos ?? nextNonPositional+1
         if insertionPos > 0 {
           while list.count <= insertionPos-1 {
             list.append(.Unknown)

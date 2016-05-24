@@ -1,0 +1,9 @@
+// Generated using SwiftGen, by O.Halligon — https://github.com/AliSoftware/SwiftGen
+
+import UIKit
+
+@objc public enum Icon: Int {
+}
+
+let IconMapping: Array<String> = [
+]
