@@ -9,14 +9,14 @@
 import Foundation
 
 public protocol IconsFileParser {
-    var icons: Dictionary<String, String> { get }
+    var icons: [String: String] { get }
 }
 
 // MARK: - JSON File Parser
 
 public final class IconsJSONFileParser: IconsFileParser {
     
-    public var icons = Dictionary<String, String>()
+    public var icons = [String: String]()
     
     public init() {}
     
@@ -24,9 +24,9 @@ public final class IconsJSONFileParser: IconsFileParser {
         if let JSONdata = NSData(contentsOfFile: path),
             let json = try? NSJSONSerialization.JSONObjectWithData(JSONdata, options: []),
             let dict = json as? [String: String] {
-            for (key, value) in dict {
-                icons[key] = value
-            }
+                for (key, value) in dict {
+                    icons[key] = value
+                }
         }
     }
 }

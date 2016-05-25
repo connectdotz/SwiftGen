@@ -3,7 +3,17 @@
 import UIKit
 
 @objc public enum Icon: Int {
+    case Comment
+    case Commentalt
+    case Star
+    case Unstar
+    case User
 }
 
 let IconMapping: Array<String> = [
+    "\uE005",
+    "\uE004",
+    "\uE001",
+    "\uE002",
+    "\uE003",
 ]

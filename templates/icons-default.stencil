@@ -5,18 +5,15 @@ import UIKit
 {% if icons %}
 @objc public enum {{enumName}}: Int {
     {% for icon in icons %}
-    /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#{{color.rgb}}"></span>
-    /// Alpha: {{color.alpha|hexToInt|int255toFloat|percent}} <br/> (0x{{color.rgba}})
-    case {{icon.name}}
+    case {{icon.name|swiftIdentifier}}
     {% endfor %}
 }
 
-let IconMapping: Array<String> = [
-{% for icon in icons %}
-"\u{{{icon.unicode}}}",
-{% endfor %}
+let {{enumName}}Mapping: Array<String> = [
+    {% for icon in icons %}
+    "\u{{icon.unicode}}",
+    {% endfor %}
 ]
-
 {% else %}
-// No icons found
+// No icon found
 {% endif %}
