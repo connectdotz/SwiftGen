@@ -11,9 +11,9 @@ import UIKit
 }
 
 let IconMapping: Array<String> = [
-    "\uE005",
-    "\uE004",
-    "\uE001",
-    "\uE002",
-    "\uE003",
+    "E005",
+    "E004",
+    "E001",
+    "E002",
+    "E003",
 ]

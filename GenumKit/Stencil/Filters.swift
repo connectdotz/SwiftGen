@@ -54,7 +54,7 @@ struct StringFilters {
     let comps = string.componentsSeparatedByString("_")
     return prefixUnderscores + comps.map { titlecase($0) }.joinWithSeparator("")
   }
-
+  
   /**
   This returns the string with its first parameter uppercased.
   - note: This is quite similar to `capitalise` except that this filter doesn't lowercase
@@ -67,6 +67,20 @@ struct StringFilters {
   private static func titlecase(string: String) -> String {
     guard let first = string.unicodeScalars.first else { return string }
     return String(first).uppercaseString + String(string.unicodeScalars.dropFirst())
+  }
+    
+  static func unicodeCase(value: Any?) throws -> Any? {
+    guard let string = value as? String else { throw FilterError.InvalidInputType }
+    return unicodeCase(string)
+  }
+    
+  private static func unicodeCase(string: String) -> String {
+    let escapingCharacterSet = NSCharacterSet(charactersInString: "\\")
+    let unicode = string.stringByTrimmingCharactersInSet(escapingCharacterSet)
+    
+    let newString = "\\u{" + unicode + "}"
+    
+    return newString
   }
 }
 

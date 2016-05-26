@@ -44,4 +44,15 @@ class StringFiltersrTests: XCTestCase {
       XCTAssertEqual(result, expected)
     }
   }
+    
+  func testUnicodeCase() {
+    let expectations = [
+        "\\f26e": "\\u{f26e}",
+    ]
+    
+    for (input, expected) in expectations {
+      let result = try! StringFilters.unicodeCase(input) as? String
+      XCTAssertEqual(result, expected)
+    }
+  }
 }

@@ -40,6 +40,7 @@ public class GenumNamespace: Namespace {
     self.registerFilter("lowerFirstWord", filter: StringFilters.lowerFirstWord)
     self.registerFilter("snakeToCamelCase", filter: StringFilters.snakeToCamelCase)
     self.registerFilter("titlecase", filter: StringFilters.titlecase)
+    self.registerFilter("unicodeCase", filter: StringFilters.unicodeCase)
     self.registerFilter("hexToInt", filter: NumFilters.hexToInt)
     self.registerFilter("int255toFloat", filter: NumFilters.int255toFloat)
     self.registerFilter("percent", filter: NumFilters.percent)
