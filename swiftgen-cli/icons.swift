@@ -14,19 +14,23 @@ let iconsCommand = command(
     outputOption,
     templateOption("icons"), templatePathOption,
     Option<String>("enumName", "Icon", flag: "e", description: "The name of the enum to generate"),
-    Argument<Path>("FILE", description: "Icons.json file to parse.", validator: fileExists)
+    Argument<Path>("FILE", description: "Icons.ttf|otf|json file to parse.", validator: fileExists)
 ) { output, templateName, templatePath, enumName, path in
     
     let filePath = String(path)
     
     let parser: IconsFileParser
     switch path.`extension` {
+    case "ttf"?:
+        let textParser = IconsFontFileParser()
+        try textParser.parseFile(filePath)
+        parser = textParser
     case "json"?:
         let textParser = IconsJSONFileParser()
         try textParser.parseFile(filePath)
         parser = textParser
     default:
-        throw ArgumentError.InvalidType(value: filePath, type: "JSON file", argument: nil)
+        throw ArgumentError.InvalidType(value: filePath, type: "TTF, OTF or JSON file", argument: nil)
     }
     
     do {

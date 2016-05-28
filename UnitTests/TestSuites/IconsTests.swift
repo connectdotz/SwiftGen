@@ -10,12 +10,22 @@ import XCTest
 import GenumKit
 import PathKit
 
-class IconsJSONFileTests: XCTestCase {
+class IconsTTFFileTests: XCTestCase {
     
-    func testFileWithDefaults() {
-        let parser = IconsJSONFileParser()
+    func testEmpty() {
+        let parser = IconsFontFileParser()
+        
+        let template = GenumTemplate(templateString: fixtureString("icons-default.stencil"))
+        let result = try! template.render(parser.stencilContext())
+        
+        let expected = self.fixtureString("Icons-Empty.swift.out")
+        XCTDiffStrings(result, expected)
+    }
+    
+    func testTTFFileWithDefaults() {
+        let parser = IconsFontFileParser()
         do {
-            try parser.parseFile(fixturePath("icons.json"))
+            try parser.parseFile(fixturePath("fontAwesome.ttf"))
         } catch {
             XCTFail("Exception while parsing file: \(error)")
         }
@@ -23,7 +33,54 @@ class IconsJSONFileTests: XCTestCase {
         let template = GenumTemplate(templateString: fixtureString("icons-default.stencil"))
         let result = try! template.render(parser.stencilContext())
         
-        let expected = self.fixtureString("Icons-File-Default.swift.out")
+        print(result)
+        
+        let expected = self.fixtureString("Icons-File-Font.swift.out")
+        XCTDiffStrings(result, expected)
+    }
+    
+    func testOTFFileWithDefaults() {
+        let parser = IconsFontFileParser()
+        do {
+            try parser.parseFile(fixturePath("fontAwesome.otf"))
+        } catch {
+            XCTFail("Exception while parsing file: \(error)")
+        }
+        
+        let template = GenumTemplate(templateString: fixtureString("icons-default.stencil"))
+        let result = try! template.render(parser.stencilContext())
+        
+        print(result)
+        
+        let expected = self.fixtureString("Icons-File-Font.swift.out")
+        XCTDiffStrings(result, expected)
+    }
+}
+
+class IconsJSONFileTests: XCTestCase {
+    
+    func testEmpty() {
+        let parser = IconsJSONFileParser()
+        
+        let template = GenumTemplate(templateString: fixtureString("icons-default.stencil"))
+        let result = try! template.render(parser.stencilContext())
+        
+        let expected = self.fixtureString("Icons-Empty.swift.out")
+        XCTDiffStrings(result, expected)
+    }
+    
+    func testFileWithDefaults() {
+        let parser = IconsJSONFileParser()
+        do {
+            try parser.parseFile(fixturePath("fontAwesome.json"))
+        } catch {
+            XCTFail("Exception while parsing file: \(error)")
+        }
+        
+        let template = GenumTemplate(templateString: fixtureString("icons-default.stencil"))
+        let result = try! template.render(parser.stencilContext())
+                
+        let expected = self.fixtureString("Icons-File-Defaults.swift.out")
         XCTDiffStrings(result, expected)
     }
 }
