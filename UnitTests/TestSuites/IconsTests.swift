@@ -16,7 +16,7 @@ class IconsTTFFileTests: XCTestCase {
         let parser = IconsFontFileParser()
         
         let template = GenumTemplate(templateString: fixtureString("icons-default.stencil"))
-        let result = try! template.render(parser.stencilContext())
+        let result = try! template.render(parser.stencilContext(familyName: "fontAwesome"))
         
         let expected = self.fixtureString("Icons-Empty.swift.out")
         XCTDiffStrings(result, expected)
@@ -31,11 +31,9 @@ class IconsTTFFileTests: XCTestCase {
         }
         
         let template = GenumTemplate(templateString: fixtureString("icons-default.stencil"))
-        let result = try! template.render(parser.stencilContext())
+        let result = try! template.render(parser.stencilContext(familyName: "fontAwesome"))
         
-        print(result)
-        
-        let expected = self.fixtureString("Icons-File-Font.swift.out")
+        let expected = self.fixtureString("Icons-File-TTF.swift.out")
         XCTDiffStrings(result, expected)
     }
     
@@ -48,11 +46,9 @@ class IconsTTFFileTests: XCTestCase {
         }
         
         let template = GenumTemplate(templateString: fixtureString("icons-default.stencil"))
-        let result = try! template.render(parser.stencilContext())
+        let result = try! template.render(parser.stencilContext(familyName: "fontAwesome"))
         
-        print(result)
-        
-        let expected = self.fixtureString("Icons-File-Font.swift.out")
+        let expected = self.fixtureString("Icons-File-OTF.swift.out")
         XCTDiffStrings(result, expected)
     }
 }
@@ -63,7 +59,7 @@ class IconsJSONFileTests: XCTestCase {
         let parser = IconsJSONFileParser()
         
         let template = GenumTemplate(templateString: fixtureString("icons-default.stencil"))
-        let result = try! template.render(parser.stencilContext())
+        let result = try! template.render(parser.stencilContext(familyName: "fontAwesome"))
         
         let expected = self.fixtureString("Icons-Empty.swift.out")
         XCTDiffStrings(result, expected)
@@ -78,7 +74,7 @@ class IconsJSONFileTests: XCTestCase {
         }
         
         let template = GenumTemplate(templateString: fixtureString("icons-default.stencil"))
-        let result = try! template.render(parser.stencilContext())
+        let result = try! template.render(parser.stencilContext(familyName: "fontAwesome"))
                 
         let expected = self.fixtureString("Icons-File-Defaults.swift.out")
         XCTDiffStrings(result, expected)
