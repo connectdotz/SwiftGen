@@ -10,37 +10,34 @@ import Foundation
 import CoreText
 
 public protocol IconsFileParser {
+    var familyName:String? { get }
     var icons: [String: String] { get }
 }
 
 // MARK: - TTF/OTF File Parser
 
 public final class IconsFontFileParser: IconsFileParser {
+    
+    public var familyName:String? = ""
     public var icons = [String: String]()
     
     public init() {}
     
     public func parseFile(path: String) throws {
         
-        let url = NSURL(fileURLWithPath: path)
+        let fileURL = NSURL(fileURLWithPath: path)
+
+        let descs = CTFontManagerCreateFontDescriptorsFromURL(fileURL) as NSArray?
+        guard let desc = (descs as? [CTFontDescriptorRef])?.first else { return }
         
-        guard let fontName = url.URLByDeletingPathExtension?.lastPathComponent else { print("Wrong font name"); return }
-        guard let fileExtension = url.pathExtension else { print("Wrong font extension"); return }
-        
-        if fileExtension != "ttf" && fileExtension != "otf" {
-            print("Wrong font type. Please provide a TTF or OTF file.")
-            return
-        }
-        
-        CTFontManagerRegisterFontsForURL(url, .None, nil)
+        let ctFont = CTFontCreateWithFontDescriptorAndOptions(desc, 0.0, nil, [.PreventAutoActivation])
+        let characterSet = CTFontCopyCharacterSet(ctFont)
+        let fontName = CTFontCopyFullName(ctFont) as String
         
         guard let cgFont = CGFontCreateWithFontName(fontName) else { return }
         
-        let postScriptName = CGFontCopyPostScriptName(cgFont)
-        let fullName = CGFontCopyFullName(cgFont)
+        familyName = CTFontCopyFamilyName(ctFont) as String
         
-        let ctFont = CTFontCreateWithName(fontName, 0, nil)
-        let characterSet = CTFontCopyCharacterSet(ctFont)
         
         // Private Use Area (PUA)
         // Defined in https://en.wikipedia.org/wiki/Private_Use_Areas#Assignment
@@ -79,6 +76,7 @@ public final class IconsFontFileParser: IconsFileParser {
 
 public final class IconsJSONFileParser: IconsFileParser {
     
+    public var familyName: String?
     public var icons = [String: String]()
     
     public init() {}

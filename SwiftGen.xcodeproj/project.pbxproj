@@ -68,9 +68,10 @@
 		F558DA5D1CF3E5C10014717C /* icons-default.stencil in Resources */ = {isa = PBXBuildFile; fileRef = F558DA5C1CF3E5C10014717C /* icons-default.stencil */; };
 		F558DA601CF3E8330014717C /* icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F558DA5E1CF3E7FD0014717C /* icons.swift */; };
 		F56292ED1CF4076200458FFD /* Icons-File-Defaults.swift.out in Resources */ = {isa = PBXBuildFile; fileRef = F56292EC1CF4076200458FFD /* Icons-File-Defaults.swift.out */; };
-		F56503101CFA2B1B0083F1D9 /* Icons-File-Font.swift.out in Resources */ = {isa = PBXBuildFile; fileRef = F565030F1CFA2B1B0083F1D9 /* Icons-File-Font.swift.out */; };
+		F56503101CFA2B1B0083F1D9 /* Icons-File-TTF.swift.out in Resources */ = {isa = PBXBuildFile; fileRef = F565030F1CFA2B1B0083F1D9 /* Icons-File-TTF.swift.out */; };
 		F56503121CFA2C500083F1D9 /* Icons-Empty.swift.out in Resources */ = {isa = PBXBuildFile; fileRef = F56503111CFA2C500083F1D9 /* Icons-Empty.swift.out */; };
 		F56503141CFA2E920083F1D9 /* fontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = F56503131CFA2E920083F1D9 /* fontAwesome.otf */; };
+		F56503161CFA33820083F1D9 /* Icons-File-OTF.swift.out in Resources */ = {isa = PBXBuildFile; fileRef = F56503151CFA33820083F1D9 /* Icons-File-OTF.swift.out */; };
 		F5AF35811CF6E65500737FD5 /* fontAwesome.json in Resources */ = {isa = PBXBuildFile; fileRef = F5AF357F1CF6E65500737FD5 /* fontAwesome.json */; };
 		F5AF35821CF6E65500737FD5 /* fontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F5AF35801CF6E65500737FD5 /* fontAwesome.ttf */; };
 /* End PBXBuildFile section */
@@ -193,9 +194,10 @@
 		F558DA5C1CF3E5C10014717C /* icons-default.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "icons-default.stencil"; sourceTree = "<group>"; };
 		F558DA5E1CF3E7FD0014717C /* icons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = icons.swift; sourceTree = "<group>"; };
 		F56292EC1CF4076200458FFD /* Icons-File-Defaults.swift.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icons-File-Defaults.swift.out"; sourceTree = "<group>"; };
-		F565030F1CFA2B1B0083F1D9 /* Icons-File-Font.swift.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icons-File-Font.swift.out"; sourceTree = "<group>"; };
+		F565030F1CFA2B1B0083F1D9 /* Icons-File-TTF.swift.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icons-File-TTF.swift.out"; sourceTree = "<group>"; };
 		F56503111CFA2C500083F1D9 /* Icons-Empty.swift.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icons-Empty.swift.out"; sourceTree = "<group>"; };
 		F56503131CFA2E920083F1D9 /* fontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fontAwesome.otf; sourceTree = "<group>"; };
+		F56503151CFA33820083F1D9 /* Icons-File-OTF.swift.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Icons-File-OTF.swift.out"; sourceTree = "<group>"; };
 		F5AF357F1CF6E65500737FD5 /* fontAwesome.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fontAwesome.json; sourceTree = "<group>"; };
 		F5AF35801CF6E65500737FD5 /* fontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fontAwesome.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -277,7 +279,8 @@
 				09EB0A1E1BDC60F000B2CF79 /* Colors-File-CustomName.swift.out */,
 				F56503111CFA2C500083F1D9 /* Icons-Empty.swift.out */,
 				F56292EC1CF4076200458FFD /* Icons-File-Defaults.swift.out */,
-				F565030F1CFA2B1B0083F1D9 /* Icons-File-Font.swift.out */,
+				F565030F1CFA2B1B0083F1D9 /* Icons-File-TTF.swift.out */,
+				F56503151CFA33820083F1D9 /* Icons-File-OTF.swift.out */,
 				4761E0331BDE753000B9B05F /* Images-Empty.swift.out */,
 				09EB0A211BDC60F000B2CF79 /* Images-Entries-Defaults.swift.out */,
 				09EB0A231BDC60F000B2CF79 /* Images-File-Defaults.swift.out */,
@@ -480,6 +483,7 @@
 				09EB0A1A1BDC3AC400B2CF79 /* strings-default.stencil in Resources */,
 				09EB0A291BDC60F000B2CF79 /* Colors-List-Defaults.swift.out in Resources */,
 				09A87B701BCCA5F600D9B9F5 /* Strings-Lines-Defaults.swift.out in Resources */,
+				F56503161CFA33820083F1D9 /* Icons-File-OTF.swift.out in Resources */,
 				4761E0361BDE753000B9B05F /* Colors-Empty.swift.out in Resources */,
 				EFFE62F81C27081A00FE9783 /* Dependency.storyboard in Resources */,
 				F56503121CFA2C500083F1D9 /* Icons-Empty.swift.out in Resources */,
@@ -512,7 +516,7 @@
 				0911503F1BD4136E00EBC803 /* storyboards-default.stencil in Resources */,
 				097504271C78ED3400D1A01B /* colors.xml in Resources */,
 				470A14E11BEA63D30052EAC8 /* storyboards-lowercase.stencil in Resources */,
-				F56503101CFA2B1B0083F1D9 /* Icons-File-Font.swift.out in Resources */,
+				F56503101CFA2B1B0083F1D9 /* Icons-File-TTF.swift.out in Resources */,
 				F56292ED1CF4076200458FFD /* Icons-File-Defaults.swift.out in Resources */,
 				93DA731D1BF34E26000A3C84 /* Strings-File-UTF8-Defaults.swift.out in Resources */,
 				09EB0A2F1BDC60F000B2CF79 /* Storyboards-Message-Defaults.swift.out in Resources */,
