@@ -25,6 +25,10 @@ let iconsCommand = command(
         let textParser = IconsFontFileParser()
         try textParser.parseFile(filePath)
         parser = textParser
+    case "otf"?:
+        let textParser = IconsFontFileParser()
+        try textParser.parseFile(filePath)
+        parser = textParser
     case "json"?:
         let textParser = IconsJSONFileParser()
         try textParser.parseFile(filePath)
@@ -36,10 +40,47 @@ let iconsCommand = command(
     do {
         let templateRealPath = try findTemplate("icons", templateShortName: templateName, templateFullPath: templatePath)
         let template = try GenumTemplate(path: templateRealPath)
-        let context = parser.stencilContext(enumName: enumName)
+        let context = parser.stencilContext(enumName: enumName, familyName: parser.familyName)
         let rendered = try template.render(context)
         output.write(rendered, onlyIfChanged: true)
-    } catch {
+        
+        func writeJSONData(data: NSData) {
+            if let jsonString = String(data: data, encoding: NSASCIIStringEncoding) {
+                switch output {
+                case .Console: return
+                case .File(let path):
+                    do {
+                        guard let jsonPath = ((path.description as NSString).stringByDeletingPathExtension as NSString).stringByAppendingPathExtension("json") else {
+                            return print("Not writing the file as content is unchanged")
+                        }
+                        let jsonOutput = Path(jsonPath)
+                        try jsonOutput.write(jsonString)
+                        print("File written: \(jsonPath)")
+                    } catch let e as NSError {
+                        print("Error: \(e)")
+                    }
+                }
+            }
+        }
+        
+        var unicodes = [String: String]()
+        
+        for key in Array(parser.icons.keys) {
+            let name = try! StringFilters.snakeToCamelCase(key) as? String
+            
+            if let name = name {
+                unicodes[name] = parser.icons[key]
+            }
+        }
+        
+        let dict:[String: AnyObject] = ["filename": path.lastComponent,
+                                        "name": path.lastComponentWithoutExtension,
+                                        "unicodes": unicodes]
+        
+        let jsonData = try NSJSONSerialization.dataWithJSONObject(dict, options: .PrettyPrinted)
+        writeJSONData(jsonData)
+    }
+    catch {
         print("Failed to render template \(error)")
     }
 }
