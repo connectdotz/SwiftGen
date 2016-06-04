@@ -3,40 +3,21 @@
 import UIKit
 
 {% if icons %}
-extension {{enumName}}ic {
-    class func attributedStringFor{{enumName}}({{enumName|lowercase}}: {{enumName}}, size: CGFloat, color: UIColor?) -> NSAttributedString? {
-        return {{enumName}}ic.attributedStringForIndex({{enumName|lowercase}}.rawValue, size: size, color: color)
-    }
-    
-    class func imageFor{{enumName}}({{enumName|lowercase}}: {{enumName}}, size: CGFloat, color: UIColor?) -> UIImage? {
-        return {{enumName}}ic.imageForIndex({{enumName|lowercase}}.rawValue, size: size, color: color)
-    }
-}
-
-extension UIBarButtonItem {
-    
-    public convenience init({{enumName|lowercase}}: {{enumName}}, size: CGFloat, target: AnyObject?, action: Selector) {
-        
-        let image = {{enumName}}ic.imageForIndex({{enumName|lowercase}}.rawValue, size: size, color: .blackColor())
-        self.init(image: image, style: .Plain, target: target, action: action)
-    }
-}
-
-extension UITabBarItem {
-    
-    public convenience init({{enumName|lowercase}}: {{enumName}}, size: CGFloat, title: String?, tag: Int) {
-        
-        let image = {{enumName}}ic.imageForIndex({{enumName|lowercase}}.rawValue, size: size, color: .blackColor())
-        self.init(title: title, image: image, tag: tag)
-    }
-}
-
+/**
+A strongly typed representation of every icon glyph name.
+*/
 @objc public enum {{enumName}}: Int {
     {% for icon in icons %}
     case {{icon.name|swiftIdentifier|snakeToCamelCase}}
     {% endfor %}
+
+    // Useful to get the total count of icons. This index doesn't have any associated unicode value.
+    case TotalCount
 }
 
+/**
+A list of unicode characters associated with each {{enumName}} case, in order.
+*/
 public let {{enumName}}Mapping: Array<String> = [
     {% for icon in icons %}
     "{{icon.unicode|unicodeCase}}",
