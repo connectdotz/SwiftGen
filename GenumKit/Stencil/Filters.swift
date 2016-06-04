@@ -10,8 +10,8 @@ enum FilterError: ErrorType {
   case InvalidInputType
 }
 
-struct StringFilters {
-  static func stringToSwiftIdentifier(value: Any?) throws -> Any? {
+public struct StringFilters {
+  public static func stringToSwiftIdentifier(value: Any?) throws -> Any? {
     guard let value = value as? String else { throw FilterError.InvalidInputType }
     return swiftIdentifier(fromString: value, replaceWithUnderscores: true)
   }
@@ -20,7 +20,7 @@ struct StringFilters {
    * - If the string starts with multiple uppercase letters, lowercase those first letters up to the one before the last uppercase one
    * e.g. "PeoplePicker" gives "peoplePicker" but "URLChooser" gives "urlChooser"
    */
-  static func lowerFirstWord(value: Any?) throws -> Any? {
+  public static func lowerFirstWord(value: Any?) throws -> Any? {
     guard let string = value as? String else { throw FilterError.InvalidInputType }
 
     let cs = NSCharacterSet.uppercaseLetterCharacterSet()
@@ -37,12 +37,12 @@ struct StringFilters {
     return transformed
   }
 
-  static func titlecase(value: Any?) throws -> Any? {
+  public static func titlecase(value: Any?) throws -> Any? {
     guard let string = value as? String else { throw FilterError.InvalidInputType }
     return titlecase(string)
   }
 
-  static func snakeToCamelCase(value: Any?) throws -> Any? {
+  public static func snakeToCamelCase(value: Any?) throws -> Any? {
     guard let string = value as? String else { throw FilterError.InvalidInputType }
 
     var prefixUnderscores = ""
