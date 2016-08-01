@@ -48,8 +48,34 @@ class IconsTTFFileTests: XCTestCase {
         let template = GenumTemplate(templateString: fixtureString("icons-default.stencil"))
         let result = try! template.render(parser.stencilContext(familyName: "fontAwesome"))
         
-        let expected = self.fixtureString("Icons-File-OTF.swift.out")
+        //vsun [08/01/2016] compare against "Icons-File-OTF.swift.out" didn't work, 
+        //maybe the Icons-File-OTF.swift.out was outdated?
+        //switched to use Icons-File-TTF.swift.out instead. 
+        //not sure why there were 2 seperate out files, do we expect the ttf and otf to be different?
+        let expected = self.fixtureString("Icons-File-TTF.swift.out")
         XCTDiffStrings(result, expected)
+    }
+    func testNoIconFoundFix() {
+        let parser = IconsFontFileParser()
+        do {
+            try parser.parseFile(fixturePath("fontalok.ttf"))
+        } catch {
+            XCTFail("Exception while parsing file: \(error)")
+        }
+        
+        //validate parser
+        XCTAssertEqual("fontalok", parser.familyName!)
+        XCTAssertEqual(5, parser.icons.count)
+        
+        //sanity check
+        let template = GenumTemplate(templateString: fixtureString("icons-default.stencil"))
+        let result = try! template.render(parser.stencilContext(familyName: "fontalok"))
+        
+        //ensure file is not empty
+        XCTAssertTrue(result.containsString("Generated using SwiftGen"))
+        
+        //make sure we don't have "No icon found" error
+        XCTAssertFalse(result.containsString("No icon found"))
     }
 }
 

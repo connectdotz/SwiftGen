@@ -59,6 +59,7 @@
 		4761E0381BDE753000B9B05F /* Storyboards-Empty.swift.out in Resources */ = {isa = PBXBuildFile; fileRef = 4761E0341BDE753000B9B05F /* Storyboards-Empty.swift.out */; };
 		4761E0391BDE753000B9B05F /* Strings-Empty.swift.out in Resources */ = {isa = PBXBuildFile; fileRef = 4761E0351BDE753000B9B05F /* Strings-Empty.swift.out */; };
 		641CD33E1C3AE35A00D7FED9 /* colors.clr in Resources */ = {isa = PBXBuildFile; fileRef = 641CD33D1C3AE35A00D7FED9 /* colors.clr */; };
+		81FE70F31D4FE1D300008F2E /* fontalok.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 81FE70F21D4FE1D300008F2E /* fontalok.ttf */; };
 		91554FDE6EC0E514DECD71FA /* Pods_UnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B594462FF573E83D0DEF1C64 /* Pods_UnitTests.framework */; };
 		93DA731D1BF34E26000A3C84 /* Strings-File-UTF8-Defaults.swift.out in Resources */ = {isa = PBXBuildFile; fileRef = 93DA731C1BF34E26000A3C84 /* Strings-File-UTF8-Defaults.swift.out */; };
 		C2265B591C8907CA00CA5C4F /* colors.json in Resources */ = {isa = PBXBuildFile; fileRef = C2265B581C8907CA00CA5C4F /* colors.json */; };
@@ -181,6 +182,7 @@
 		4761E0351BDE753000B9B05F /* Strings-Empty.swift.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Strings-Empty.swift.out"; sourceTree = "<group>"; };
 		641CD33D1C3AE35A00D7FED9 /* colors.clr */ = {isa = PBXFileReference; lastKnownFileType = file; path = colors.clr; sourceTree = "<group>"; };
 		682F146ADE25633DEBA0841F /* Pods_swiftgen_cli.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swiftgen_cli.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		81FE70F21D4FE1D300008F2E /* fontalok.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fontalok.ttf; sourceTree = "<group>"; };
 		93DA731C1BF34E26000A3C84 /* Strings-File-UTF8-Defaults.swift.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Strings-File-UTF8-Defaults.swift.out"; sourceTree = "<group>"; };
 		98E9147EC3C2F7F479CCF739 /* Pods-UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UnitTests/Pods-UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B594462FF573E83D0DEF1C64 /* Pods_UnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -305,6 +307,7 @@
 		09030C081B6D2FF600275BF5 /* fixtures */ = {
 			isa = PBXGroup;
 			children = (
+				81FE70F21D4FE1D300008F2E /* fontalok.ttf */,
 				09030C2F1B6D4F8500275BF5 /* Images.xcassets */,
 				09030C0B1B6D30E800275BF5 /* Message.storyboard */,
 				09030C0C1B6D30E800275BF5 /* Wizard.storyboard */,
@@ -486,6 +489,7 @@
 				F56503161CFA33820083F1D9 /* Icons-File-OTF.swift.out in Resources */,
 				4761E0361BDE753000B9B05F /* Colors-Empty.swift.out in Resources */,
 				EFFE62F81C27081A00FE9783 /* Dependency.storyboard in Resources */,
+				81FE70F31D4FE1D300008F2E /* fontalok.ttf in Resources */,
 				F56503121CFA2C500083F1D9 /* Icons-Empty.swift.out in Resources */,
 				F56503141CFA2E920083F1D9 /* fontAwesome.otf in Resources */,
 				09A87B5E1BCCA4D100D9B9F5 /* Message.storyboard in Resources */,

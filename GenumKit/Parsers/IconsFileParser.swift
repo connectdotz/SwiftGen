@@ -28,13 +28,14 @@ public final class IconsFontFileParser: IconsFileParser {
         let fileURL = NSURL(fileURLWithPath: path)
 
         let descs = CTFontManagerCreateFontDescriptorsFromURL(fileURL) as NSArray?
-        guard let desc = (descs as? [CTFontDescriptorRef])?.first else { return }
+        guard let desc = (descs as? [CTFontDescriptorRef])?.first else {
+            print("failed to get font description from \(path)")
+            return
+        }
         
         let ctFont = CTFontCreateWithFontDescriptorAndOptions(desc, 0.0, nil, [.PreventAutoActivation])
         let characterSet = CTFontCopyCharacterSet(ctFont)
-        let fontName = CTFontCopyFullName(ctFont) as String
-        
-        guard let cgFont = CGFontCreateWithFontName(fontName) else { return }
+        let cgFont = CTFontCopyGraphicsFont(ctFont, nil)
         
         familyName = CTFontCopyFamilyName(ctFont) as String
         
@@ -66,6 +67,8 @@ public final class IconsFontFileParser: IconsFileParser {
                     let value = String(format:"%X", unicode)
                     
                     icons[key] = value
+                } else {
+                    print("failed to get glyph name for:\(unicode)")
                 }
             }
         }
