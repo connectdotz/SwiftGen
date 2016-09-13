@@ -12,6 +12,7 @@ import CoreText
 public protocol IconsFileParser {
     var familyName:String? { get }
     var icons: [String: String] { get }
+    var fontFile: String? { get }
 }
 
 // MARK: - TTF/OTF File Parser
@@ -20,12 +21,15 @@ public final class IconsFontFileParser: IconsFileParser {
     
     public var familyName:String? = ""
     public var icons = [String: String]()
+    public var fontFile: String?
     
     public init() {}
     
     public func parseFile(path: String) throws {
         
         let fileURL = NSURL(fileURLWithPath: path)
+        fontFile = fileURL.lastPathComponent
+        print("fontFile=\(fontFile!)")
 
         let descs = CTFontManagerCreateFontDescriptorsFromURL(fileURL) as NSArray?
         guard let desc = (descs as? [CTFontDescriptorRef])?.first else {
@@ -81,6 +85,7 @@ public final class IconsJSONFileParser: IconsFileParser {
     
     public var familyName: String?
     public var icons = [String: String]()
+    public var fontFile: String?
     
     public init() {}
     
@@ -88,6 +93,8 @@ public final class IconsJSONFileParser: IconsFileParser {
         if let JSONdata = NSData(contentsOfFile: path),
             let json = try? NSJSONSerialization.JSONObjectWithData(JSONdata, options: []),
             let dict = json as? [String: String] {
+                fontFile = path
+            
                 for (key, value) in dict {
                     icons[key] = value
                 }

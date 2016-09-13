@@ -48,7 +48,7 @@ extension ColorsFileParser {
 }
 
 extension IconsFileParser {
-    public func stencilContext(enumName enumName: String = "Icon", familyName: String?) -> Context {
+    public func stencilContext(enumName enumName: String = "Icon", familyName: String?, fontFile: String?) -> Context {
         let iconMap = icons.map({ (icon: (name: String, value: String)) -> [String:String] in
             return [
                 "name": icon.name,
@@ -60,6 +60,9 @@ extension IconsFileParser {
         
         if let familyName = familyName {
             dictionary["familyName"] = familyName
+        }
+        if let fontFile = fontFile {
+            dictionary["fontFile"] = fontFile
         }
         
         return Context(dictionary: dictionary)

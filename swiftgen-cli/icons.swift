@@ -40,7 +40,7 @@ let iconsCommand = command(
     do {
         let templateRealPath = try findTemplate("icons", templateShortName: templateName, templateFullPath: templatePath)
         let template = try GenumTemplate(path: templateRealPath)
-        let context = parser.stencilContext(enumName: enumName, familyName: parser.familyName)
+        let context = parser.stencilContext(enumName: enumName, familyName: parser.familyName, fontFile: parser.fontFile)
         let rendered = try template.render(context)
         output.write(rendered, onlyIfChanged: true)
         
